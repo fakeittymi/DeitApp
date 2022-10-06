@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BalancedDietModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BalancedDiet.dbo.DietProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DietProducts">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Calories" />
+            <PropertyRef Name="Proteins" />
+            <PropertyRef Name="Fats" />
+            <PropertyRef Name="Carbons" />
+            <PropertyRef Name="Mass" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="DayNumber" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserProductId" Type="uniqueidentifier" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Calories" Type="int" Nullable="false" />
+          <Property Name="Proteins" Type="real" Nullable="false" />
+          <Property Name="Fats" Type="real" Nullable="false" />
+          <Property Name="Carbons" Type="real" Nullable="false" />
+          <Property Name="Mass" Type="real" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="DayNumber" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RestProducts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Calories" Type="int" Nullable="false" />
+          <Property Name="Proteins" Type="real" Nullable="false" />
+          <Property Name="Fats" Type="real" Nullable="false" />
+          <Property Name="Carbons" Type="real" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SuggestionProducts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Calories" Type="int" Nullable="false" />
+          <Property Name="Proteins" Type="real" Nullable="false" />
+          <Property Name="Fats" Type="real" Nullable="false" />
+          <Property Name="Carbons" Type="real" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserBLProducts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Sex" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="int" Nullable="false" />
+          <Property Name="Height" Type="int" Nullable="false" />
+          <Property Name="Activity" Type="real" Nullable="false" />
+          <Property Name="DietGoal" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BalancedDiet.dbo.UsersAuth' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UsersAuth">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Login" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserWLProducts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Calories" Type="int" Nullable="false" />
+          <Property Name="Proteins" Type="real" Nullable="false" />
+          <Property Name="Fats" Type="real" Nullable="false" />
+          <Property Name="Carbons" Type="real" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BalancedDietModelStoreContainer">
+          <EntitySet Name="RestProducts" EntityType="Self.RestProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SuggestionProducts" EntityType="Self.SuggestionProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserBLProducts" EntityType="Self.UserBLProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserWLProducts" EntityType="Self.UserWLProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DietProducts" EntityType="Self.DietProducts" store:Type="Tables" Schema="dbo">
+          </EntitySet>
+          
+          <EntitySet Name="UsersAuth" EntityType="Self.UsersAuth" store:Type="Tables" Schema="dbo">
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BalancedDietModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="RestProducts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Calories" Type="Int32" Nullable="false" />
+          <Property Name="Proteins" Type="Single" Nullable="false" />
+          <Property Name="Fats" Type="Single" Nullable="false" />
+          <Property Name="Carbons" Type="Single" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SuggestionProducts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Calories" Type="Int32" Nullable="false" />
+          <Property Name="Proteins" Type="Single" Nullable="false" />
+          <Property Name="Fats" Type="Single" Nullable="false" />
+          <Property Name="Carbons" Type="Single" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserBLProducts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="ProductId" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Sex" Type="Int32" Nullable="false" />
+          <Property Name="Weight" Type="Int32" Nullable="false" />
+          <Property Name="Height" Type="Int32" Nullable="false" />
+          <Property Name="Activity" Type="Single" Nullable="false" />
+          <Property Name="DietGoal" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserWLProducts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Calories" Type="Int32" Nullable="false" />
+          <Property Name="Proteins" Type="Single" Nullable="false" />
+          <Property Name="Fats" Type="Single" Nullable="false" />
+          <Property Name="Carbons" Type="Single" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DietProducts">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Calories" />
+            <PropertyRef Name="Proteins" />
+            <PropertyRef Name="Fats" />
+            <PropertyRef Name="Carbons" />
+            <PropertyRef Name="Mass" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="DayNumber" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="ProductId" Type="Guid" Nullable="false" />
+          <Property Name="UserProductId" Type="Guid" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Calories" Type="Int32" Nullable="false" />
+          <Property Name="Proteins" Type="Single" Nullable="false" />
+          <Property Name="Fats" Type="Single" Nullable="false" />
+          <Property Name="Carbons" Type="Single" Nullable="false" />
+          <Property Name="Mass" Type="Single" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DayNumber" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersAuth">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Login" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BalancedDietEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="RestProducts" EntityType="Self.RestProducts" />
+          <EntitySet Name="SuggestionProducts" EntityType="Self.SuggestionProducts" />
+          <EntitySet Name="UserBLProducts" EntityType="Self.UserBLProducts" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="UserWLProducts" EntityType="Self.UserWLProducts" />
+          <EntitySet Name="DietProducts" EntityType="Self.DietProducts" />
+          <EntitySet Name="UsersAuth" EntityType="Self.UsersAuth" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BalancedDietModelStoreContainer" CdmEntityContainer="BalancedDietEntities">
+          <EntitySetMapping Name="RestProducts">
+            <EntityTypeMapping TypeName="BalancedDietModel.RestProducts">
+              <MappingFragment StoreEntitySet="RestProducts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                <ScalarProperty Name="Proteins" ColumnName="Proteins" />
+                <ScalarProperty Name="Fats" ColumnName="Fats" />
+                <ScalarProperty Name="Carbons" ColumnName="Carbons" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SuggestionProducts">
+            <EntityTypeMapping TypeName="BalancedDietModel.SuggestionProducts">
+              <MappingFragment StoreEntitySet="SuggestionProducts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                <ScalarProperty Name="Proteins" ColumnName="Proteins" />
+                <ScalarProperty Name="Fats" ColumnName="Fats" />
+                <ScalarProperty Name="Carbons" ColumnName="Carbons" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserBLProducts">
+            <EntityTypeMapping TypeName="BalancedDietModel.UserBLProducts">
+              <MappingFragment StoreEntitySet="UserBLProducts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BalancedDietModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="DietGoal" ColumnName="DietGoal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserWLProducts">
+            <EntityTypeMapping TypeName="BalancedDietModel.UserWLProducts">
+              <MappingFragment StoreEntitySet="UserWLProducts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                <ScalarProperty Name="Proteins" ColumnName="Proteins" />
+                <ScalarProperty Name="Fats" ColumnName="Fats" />
+                <ScalarProperty Name="Carbons" ColumnName="Carbons" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DietProducts">
+            <EntityTypeMapping TypeName="BalancedDietModel.DietProducts">
+              <MappingFragment StoreEntitySet="DietProducts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="UserProductId" ColumnName="UserProductId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                <ScalarProperty Name="Proteins" ColumnName="Proteins" />
+                <ScalarProperty Name="Fats" ColumnName="Fats" />
+                <ScalarProperty Name="Carbons" ColumnName="Carbons" />
+                <ScalarProperty Name="Mass" ColumnName="Mass" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DayNumber" ColumnName="DayNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersAuth">
+            <EntityTypeMapping TypeName="BalancedDietModel.UsersAuth">
+              <MappingFragment StoreEntitySet="UsersAuth">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
